@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Taiji · Test Camera M1</title>
+<style>
+  :root{
+    --bg:#171210; --card:#211913; --line:#3d2e21; --txt:#ece3d4; --mut:#a5947d;
+    --red:#c0452f; --gold:#d9b35c; --jade:#3fa98c;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--txt);
+    font-family:-apple-system,Segoe UI,Roboto,sans-serif}
+  .wrap{max-width:520px;margin:0 auto;padding:12px;display:flex;flex-direction:column;gap:10px}
+  h1{font-size:16px;margin:4px 0;color:var(--gold);font-weight:600}
+  .stage{position:relative;width:100%;aspect-ratio:3/4;background:#000;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+  video,canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  video{transform:scaleX(-1)}            /* specchio per la facecam */
+  canvas{transform:scaleX(-1)}
+  .hud{position:absolute;top:8px;left:8px;right:8px;display:flex;justify-content:space-between;gap:8px;pointer-events:none}
+  .badge{background:rgba(0,0,0,.55);backdrop-filter:blur(4px);padding:6px 10px;border-radius:6px;font-size:12px;border:1px solid var(--line)}
+  .state-moving{color:var(--jade)} .state-still{color:var(--gold)} .state-stuck{color:var(--red)}
+  .figura{position:absolute;bottom:8px;left:8px;right:8px;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);
+    padding:8px 12px;border-radius:6px;border:1px solid var(--line);pointer-events:none}
+  .figura .num{color:var(--mut);font-size:11px}
+  .figura .nome{font-size:15px;font-weight:600}
+  .figura .pinyin{font-size:11px;color:var(--mut);font-style:italic}
+  .countdown{position:absolute;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;
+    background:rgba(0,0,0,.45);backdrop-filter:blur(2px);text-align:center}
+  .countdown.show{display:flex}
+  .countdown .big{font-size:88px;font-weight:700;color:var(--gold);line-height:1}
+  .countdown .msg{font-size:14px;color:var(--txt);margin-top:8px}
+  .controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  button{background:var(--red);color:#fff;border:0;padding:10px 16px;border-radius:6px;font-size:14px;font-weight:600}
+  button.sec{background:var(--card);color:var(--txt);border:1px solid var(--line)}
+  button:disabled{opacity:.4}
+  .row{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--mut);width:100%}
+  input[type=range]{flex:1;accent-color:var(--gold)}
+  .meter{height:6px;background:var(--card);border-radius:3px;overflow:hidden;border:1px solid var(--line)}
+  .meter>i{display:block;height:100%;width:0;background:var(--jade);transition:width .08s linear}
+  .log{font-size:11px;color:var(--mut);min-height:16px}
+  label.tog{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--mut)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>太極 · Test Camera (M1) — Forma 18</h1>
+
+  <div class="stage">
+    <video id="cam" playsinline muted></video>
+    <canvas id="ov"></canvas>
+    <div class="hud">
+      <span id="state" class="badge state-moving">— in attesa —</span>
+      <span id="fps" class="badge">0 fps</span>
+    </div>
+    <div class="figura">
+      <div class="num" id="fnum">Figura 1 / 18</div>
+      <div class="nome" id="fnome">Apertura</div>
+      <div class="pinyin" id="fpin">Qǐshì</div>
+    </div>
+    <div class="countdown" id="cd">
+      <div class="big" id="cdnum">5</div>
+      <div class="msg">Posizionati nell'inquadratura…</div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button id="start">▶ Inizia</button>
+    <button id="next" class="sec" disabled>Figura successiva →</button>
+    <button id="prev" class="sec" disabled>← Indietro</button>
+    <label class="tog"><input type="checkbox" id="voice" checked> Voce</label>
+  </div>
+
+  <div class="row">Movimento
+    <div class="meter" style="flex:1"><i id="bar"></i></div>
+  </div>
+  <div class="row">Preparazione iniziale (s)
+    <input type="range" id="prep" min="0" max="20" step="1" value="10">
+    <span id="prepv">10</span>
+  </div>
+  <div class="row">Sensibilità blocco
+    <input type="range" id="thr" min="1" max="40" value="12">
+    <span id="thrv">12</span>
+  </div>
+  <div class="row">Pausa tra figure (s)
+    <input type="range" id="settle" min="0.3" max="2" step="0.1" value="1">
+    <span id="settlev">1</span>
+  </div>
+  <div class="row">Attesa prima dell'annuncio / blocco (s)
+    <input type="range" id="wait" min="1.5" max="6" step="0.5" value="2.5">
+    <span id="waitv">2.5</span>
+  </div>
+  <div class="log" id="log">Premi “Inizia”. Serve HTTPS o localhost per accedere alla camera.</div>
+</div>
+
+<script type="module">
+import { FilesetResolver, PoseLandmarker }
+  from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14";
+
+// ---- Forma 18 (Chen Zhenglei) — stesse stringhe dell'app ----
+const FORMA_18 = [
+  "Qǐshì – Apertura",
+  "Jingang daodui – Il guardiano pesta il mortaio",
+  "Lan zha yi – Allacciare pigramente la veste",
+  "Liu feng si bi – Sei sigilli e quattro chiusure",
+  "Dan bian – Frusta semplice",
+  "Bai e liang chi – La gru bianca spiega le ali",
+  "Xie xing – Passo obliquo",
+  "Lou xi – Spazzolare il ginocchio",
+  "Qian tang ao bu – Passo avanti guadando",
+  "Yan shou gong quan – Pugno coperto",
+  "Gao tan ma – Accarezzare il cavallo alto",
+  "Zuo deng yi gen – Calcio col tallone sinistro",
+  "Yu nü chuan suo – La fanciulla di giada al telaio",
+  "Yun shou – Mani come nuvole",
+  "Zhuan shen shuang bai lian – Doppio loto girando il corpo",
+  "Dang tou pao – Cannone in testa",
+  "Jingang daodui – Il guardiano pesta il mortaio (2)",
+  "Shoushi – Chiusura"
+];
+
+const $ = id => document.getElementById(id);
+const video=$("cam"), ov=$("ov"), ctx=ov.getContext("2d");
+let idx=0, prevLm=null, smooth=0, landmarker=null, running=false, analysisActive=false;
+let calibrating=false, calibSamples=[];
+let movedSinceStop=false, figureCounted=false, announced=false;
+let lastT=performance.now(), fpsEMA=0;
+
+// ---- Voce ----
+let voceIt=null;
+function initVoce(){
+  const pick=()=>{ const vs=speechSynthesis.getVoices().filter(v=>v.lang.startsWith("it"));
+    voceIt=vs.find(v=>/natur|enhanced|premium/i.test(v.name))||vs[0]||null; };
+  pick(); speechSynthesis.onvoiceschanged=pick;
+}
+function parlaFigura(str){
+  if(!$("voice").checked) return;
+  const it=str.split("–").pop().trim();
+  const u=new SpeechSynthesisUtterance(it);
+  u.lang="it-IT"; u.rate=0.95; if(voceIt) u.voice=voceIt;
+  speechSynthesis.cancel(); speechSynthesis.speak(u);
+}
+
+// ---- UI figura ----
+function mostraFigura(){
+  const [pin,nome]=FORMA_18[idx].split("–").map(s=>s.trim());
+  $("fnum").textContent=`Figura ${idx+1} / ${FORMA_18.length}`;
+  $("fnome").textContent=nome||pin;
+  $("fpin").textContent=nome?pin:"";
+}
+function vai(d){ idx=Math.max(0,Math.min(FORMA_18.length-1,idx+d)); mostraFigura(); }
+
+// ---- Macchina a stati blocco ----
+let stato="MOVING", fermoDa=0, cooldownFino=0;
+function setState(s){
+  stato=s;
+  const el=$("state"); el.className="badge "+
+    (s==="MOVING"?"state-moving":s==="STUCK"?"state-stuck":"state-still");
+  el.textContent= s==="MOVING"?"in movimento": s==="STUCK"?"bloccato → annuncio": "fermo…";
+}
+
+function motionScore(a,b){
+  let sum=0,n=0;
+  for(let i=0;i<b.length;i++){
+    if((b[i].visibility??1)<0.5) continue;
+    sum+=Math.hypot(b[i].x-a[i].x,b[i].y-a[i].y); n++;
+  }
+  return n? sum/n : 0;
+}
+
+function disegna(lm){
+  ov.width=video.videoWidth; ov.height=video.videoHeight;
+  ctx.clearRect(0,0,ov.width,ov.height);
+  const E=PoseLandmarker.POSE_CONNECTIONS;
+  ctx.lineWidth=3; ctx.strokeStyle="rgba(217,179,92,.9)";
+  for(const c of E){
+    const a=lm[c.start], b=lm[c.end];
+    if((a.visibility??1)<0.4||(b.visibility??1)<0.4) continue;
+    ctx.beginPath(); ctx.moveTo(a.x*ov.width,a.y*ov.height);
+    ctx.lineTo(b.x*ov.width,b.y*ov.height); ctx.stroke();
+  }
+  ctx.fillStyle="rgba(63,169,140,.95)";
+  for(const p of lm){ if((p.visibility??1)<0.4) continue;
+    ctx.beginPath(); ctx.arc(p.x*ov.width,p.y*ov.height,4,0,7); ctx.fill(); }
+}
+
+function loop(){
+  if(!running) return;
+  const now=performance.now();
+  const res=landmarker.detectForVideo(video, now);
+  const fps=1000/Math.max(1,now-lastT); lastT=now;
+  fpsEMA=fpsEMA?fpsEMA*0.9+fps*0.1:fps; $("fps").textContent=Math.round(fpsEMA)+" fps";
+
+  const lm=res.landmarks?.[0];
+  if(lm){
+    disegna(lm);
+    if(prevLm){
+      const raw=motionScore(prevLm,lm)*1000;     // scala leggibile
+      smooth=smooth*0.8+raw*0.2;
+      $("bar").style.width=Math.min(100,smooth*6)+"%";
+
+      if(calibrating) calibSamples.push(smooth);  // campiona il rumore "da fermo"
+
+      if(analysisActive){
+        const soglia=parseFloat($("thr").value);
+        const settleMs=parseFloat($("settle").value)*1000;   // micro-stop = figura finita
+        const attesaMs=parseFloat($("wait").value)*1000;      // pausa lunga = blocco
+
+        if(smooth<soglia){
+          if(stato==="MOVING"){ stato="STILL"; fermoDa=now; figureCounted=false; announced=false; setState("STILL"); }
+          if(stato==="STILL"){
+            // 1) figura completata (solo se ti sei davvero mosso): avanza in silenzio
+            if(!figureCounted && movedSinceStop && now-fermoDa>settleMs){
+              figureCounted=true; movedSinceStop=false;
+              if(idx<FORMA_18.length-1) vai(1);
+              $("log").textContent=`Figura completata → ora la ${idx+1}`;
+            }
+            // 2) blocco: pausa lunga → annuncia la figura corrente
+            if(!announced && now-fermoDa>attesaMs){
+              announced=true; setState("STUCK");
+              parlaFigura(FORMA_18[idx]);
+              $("log").textContent=`Bloccato → ${FORMA_18[idx]}`;
+              setTimeout(()=>{ if(stato==="STUCK") setState("STILL"); },1200);
+            }
+          }
+        } else {
+          if(stato!=="MOVING") setState("MOVING");
+          movedSinceStop=true;
+        }
+      }
+    }
+    prevLm=lm;
+  }
+  requestAnimationFrame(loop);
+}
+
+async function start(){
+  $("start").disabled=true; $("log").textContent="Avvio camera…";
+  initVoce();
+  try{
+    const stream=await navigator.mediaDevices.getUserMedia({
+      video:{facingMode:"user", width:{ideal:720}, height:{ideal:960}}, audio:false});
+    video.srcObject=stream; await video.play();
+  }catch(e){ $("log").textContent="Camera negata o non disponibile: "+e.message; $("start").disabled=false; return; }
+
+  $("log").textContent="Carico il modello di posa…";
+  const fileset=await FilesetResolver.forVisionTasks(
+    "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/wasm");
+  landmarker=await PoseLandmarker.createFromOptions(fileset,{
+    baseOptions:{ modelAssetPath:
+      "https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/1/pose_landmarker_lite.task",
+      delegate:"GPU" },
+    runningMode:"VIDEO", numPoses:1 });
+
+  running=true; analysisActive=false;
+  setState("MOVING"); mostraFigura();
+  requestAnimationFrame(loop);          // lo scheletro parte subito, per posizionarsi
+  parlaFigura(FORMA_18[idx]);           // sblocca solo il canale audio (vincolo browser)
+  speechSynthesis.cancel();             // ...ma non lasciar parlare durante la preparazione
+
+  await preparazione();                 // conto alla rovescia
+}
+
+function preparazione(){
+  return new Promise(resolve=>{
+    let sec=parseInt($("prep").value,10);
+    const cd=$("cd"), msg=cd.querySelector(".msg");
+    calibrating=false; calibSamples=[];
+    if(sec<=0){ avviaAnalisi(); return resolve(); }
+    cd.classList.add("show"); $("cdnum").textContent=sec;
+    $("log").textContent="Preparazione… posizionati nell'inquadratura.";
+    const t=setInterval(()=>{
+      sec--;
+      // ultimi 3 secondi: calibrazione, l'allievo resta fermo in posizione di partenza
+      if(sec<=3 && sec>0){ calibrating=true; msg.textContent="Resta fermo: sto calibrando…"; }
+      if(sec>0){ $("cdnum").textContent=sec; }
+      else{ clearInterval(t); calibrating=false; cd.classList.remove("show");
+            msg.textContent="Posizionati nell'inquadratura…"; avviaAnalisi(); resolve(); }
+    },1000);
+  });
+}
+
+function avviaAnalisi(){
+  // soglia = rumore medio da fermo + margine, adattata a luce/distanza
+  if(calibSamples.length>5){
+    const avg=calibSamples.reduce((a,b)=>a+b,0)/calibSamples.length;
+    const soglia=Math.max(2, Math.min(40, Math.round(avg*2.2 + 2)));
+    $("thr").value=soglia; $("thrv").textContent=soglia;
+    $("log").textContent=`Soglia calibrata: ${soglia}. `;
+  }
+  analysisActive=true; prevLm=null; smooth=0; setState("MOVING");
+  movedSinceStop=false; figureCounted=false; announced=false;
+  $("next").disabled=false; $("prev").disabled=false;
+  $("log").textContent+="Via! Muoviti, poi fermati ~"+$("wait").value+"s per l'annuncio.";
+  parlaFigura(FORMA_18[idx]);            // annuncia la prima figura ora
+}
+
+$("start").onclick=start;
+$("next").onclick=()=>{ vai(1); parlaFigura(FORMA_18[idx]); };
+$("prev").onclick=()=>{ vai(-1); parlaFigura(FORMA_18[idx]); };
+$("prep").oninput=e=>$("prepv").textContent=e.target.value;
+$("thr").oninput=e=>$("thrv").textContent=e.target.value;
+$("settle").oninput=e=>$("settlev").textContent=e.target.value;
+$("wait").oninput=e=>$("waitv").textContent=e.target.value;
+mostraFigura();
+</script>
+</body>
+</html>

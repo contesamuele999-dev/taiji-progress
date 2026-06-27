@@ -1,0 +1,13 @@
+{
+  "name": "Taiji Progress",
+  "short_name": "TaijiProgress",
+  "description": "Memorizzazione e raffinamento delle forme di taijiquan",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#171210",
+  "theme_color": "#171210",
+  "lang": "it",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

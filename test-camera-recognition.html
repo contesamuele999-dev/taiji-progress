@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Taiji · Riconoscimento forma</title>
+<style>
+  :root{--bg:#171210;--card:#211913;--line:#3d2e21;--txt:#ece3d4;--mut:#a5947d;
+    --red:#c0452f;--gold:#d9b35c;--jade:#3fa98c}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--txt);
+    font-family:-apple-system,Segoe UI,Roboto,sans-serif}
+  .wrap{max-width:520px;margin:0 auto;padding:12px;display:flex;flex-direction:column;gap:10px}
+  h1{font-size:16px;margin:4px 0;color:var(--gold);font-weight:600}
+  .tabs{display:flex;gap:6px}
+  .tabs button{flex:1;background:var(--card);color:var(--mut);border:1px solid var(--line);padding:9px;border-radius:6px;font-size:13px}
+  .tabs button.on{background:var(--red);color:#fff;border-color:var(--red)}
+  .stage{position:relative;width:100%;aspect-ratio:3/4;background:#000;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+  video,canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
+  .hud{position:absolute;top:8px;left:8px;right:8px;display:flex;justify-content:space-between;gap:8px;pointer-events:none}
+  .badge{background:rgba(0,0,0,.55);backdrop-filter:blur(4px);padding:6px 10px;border-radius:6px;font-size:12px;border:1px solid var(--line)}
+  .match-ok{color:var(--jade)} .match-lost{color:var(--gold)} .match-stuck{color:var(--red)}
+  .figura{position:absolute;bottom:8px;left:8px;right:8px;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);
+    padding:8px 12px;border-radius:6px;border:1px solid var(--line);pointer-events:none}
+  .figura .num{color:var(--mut);font-size:11px}
+  .figura .nome{font-size:15px;font-weight:600}
+  .figura .pinyin{font-size:11px;color:var(--mut);font-style:italic}
+  .countdown{position:absolute;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;
+    background:rgba(0,0,0,.45);backdrop-filter:blur(2px);text-align:center}
+  .countdown.show{display:flex}
+  .countdown .big{font-size:80px;font-weight:700;color:var(--gold);line-height:1}
+  .countdown .msg{font-size:14px;margin-top:8px}
+  .controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  button.act{background:var(--red);color:#fff;border:0;padding:10px 16px;border-radius:6px;font-size:14px;font-weight:600}
+  button.sec{background:var(--card);color:var(--txt);border:1px solid var(--line);padding:10px 14px;border-radius:6px;font-size:14px}
+  button:disabled{opacity:.4}
+  .row{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--mut);width:100%}
+  input[type=range]{flex:1;accent-color:var(--gold)}
+  label.tog{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--mut)}
+  .log{font-size:11px;color:var(--mut);min-height:16px}
+  .panel{display:none;flex-direction:column;gap:10px}
+  .panel.on{display:flex}
+  .meter{height:6px;background:var(--card);border-radius:3px;overflow:hidden;border:1px solid var(--line);flex:1}
+  .meter>i{display:block;height:100%;width:0;background:var(--jade)}
+  .pill{font-size:11px;color:var(--mut)}
+  .pill b{color:var(--txt)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>太極 · Riconoscimento Forma 18</h1>
+
+  <div class="tabs">
+    <button id="tabVid" class="on">① Da video</button>
+    <button id="tabRec">① bis Registra</button>
+    <button id="tabPlay">② Allenati</button>
+  </div>
+
+  <div class="stage">
+    <video id="cam" playsinline muted></video>
+    <canvas id="ov"></canvas>
+    <div class="hud">
+      <span id="match" class="badge match-ok">—</span>
+      <span id="fps" class="badge">0 fps</span>
+    </div>
+    <div class="figura">
+      <div class="num" id="fnum">Figura 1 / 18</div>
+      <div class="nome" id="fnome">Apertura</div>
+      <div class="pinyin" id="fpin">Qǐshì</div>
+    </div>
+    <div class="countdown" id="cd"><div class="big" id="cdnum">5</div><div class="msg">Posizionati…</div></div>
+  </div>
+
+  <!-- ===== MODALITÀ DA VIDEO ===== -->
+  <div id="panelVid" class="panel on">
+    <div class="pill">Riferimento salvato: <b id="refStateV">nessuno</b></div>
+    <div class="controls">
+      <label class="act" style="cursor:pointer">🎬 Scegli il video forma 18
+        <input type="file" id="vidFile" accept="video/*" style="display:none">
+      </label>
+    </div>
+    <label class="tog"><input type="checkbox" id="vidAdd"> ➕ Aggiungi al riferimento esistente (migliora invece di sostituire)</label>
+    <div class="row">Analisi: <div class="meter"><i id="vidBar"></i></div></div>
+    <div class="log" id="vidLog">Scegli il video con i 18 tempi già impostati. L'app analizza le pose (il modello si scarica qui sul tuo dispositivo) e crea il riferimento. Funziona anche senza HTTPS.</div>
+    <div class="log" style="color:var(--mut)">Tempi posizioni finali già caricati: 0:08 · 0:38 · 0:52 · 1:06 · 1:25 · 1:35 · 1:54 · 1:58 · 2:08 · 2:19 · 2:27 · 2:38 · 2:46 · 3:01 · 3:05 · 3:11 · 3:17 · 3:28</div>
+  </div>
+
+  <!-- ===== MODALITÀ REGISTRAZIONE ===== -->
+  <div id="panelRec" class="panel">
+    <div class="pill">Riferimento salvato: <b id="refState">nessuno</b></div>
+    <div class="controls">
+      <button id="recStart" class="act">● Avvia registrazione</button>
+      <button id="recNext" class="sec" disabled>Figura successiva ▸</button>
+      <button id="recSave" class="act" disabled>✓ Fine e salva</button>
+    </div>
+    <label class="tog"><input type="checkbox" id="recAdd"> ➕ Aggiungi al riferimento esistente (migliora invece di sostituire)</label>
+    <div class="row">Avanzamento: <div class="meter"><i id="recBar"></i></div></div>
+    <div class="controls">
+      <button id="recDownload" class="sec" disabled>⬇ Scarica riferimento (.json)</button>
+      <button id="recClear" class="sec">🗑 Cancella riferimento</button>
+    </div>
+    <div class="log" id="recLog">Esegui la forma e tocca “Figura successiva” a ogni cambio. Stessa inquadratura che userai per allenarti.</div>
+  </div>
+
+  <!-- ===== MODALITÀ PRATICA ===== -->
+  <div id="panelPlay" class="panel">
+    <div class="controls">
+      <button id="playStart" class="act">▶ Inizia allenamento</button>
+      <button id="playPrev" class="sec" disabled>←</button>
+      <button id="playNext" class="sec" disabled>→</button>
+      <label class="tog"><input type="checkbox" id="voice" checked> Voce</label>
+    </div>
+    <div class="row">Secondi di stallo prima dell'annuncio
+      <input type="range" id="stall" min="0.8" max="6" step="0.2" value="1.6"><span id="stallv">1.6</span>
+    </div>
+    <div class="row">Preparazione (s)
+      <input type="range" id="prep" min="0" max="20" step="1" value="7"><span id="prepv">7</span>
+    </div>
+    <div class="controls">
+      <label class="sec" style="cursor:pointer">⬆ Carica riferimento (.json)
+        <input type="file" id="playLoad" accept="application/json" style="display:none">
+      </label>
+    </div>
+    <div class="log" id="playLog">Serve un riferimento registrato. L'app riconosce dove sei: nessuna soglia da regolare.</div>
+  </div>
+</div>
+
+<script type="module">
+import { FilesetResolver, PoseLandmarker }
+  from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14";
+
+// ---- Nomi figure (uguali all'app) ----
+const NAMES = [
+  "Qǐshì – Apertura","Jingang daodui – Il guardiano pesta il mortaio",
+  "Lan zha yi – Allacciare pigramente la veste","Liu feng si bi – Sei sigilli e quattro chiusure",
+  "Dan bian – Frusta semplice","Bai e liang chi – La gru bianca spiega le ali",
+  "Xie xing – Passo obliquo","Lou xi – Spazzolare il ginocchio",
+  "Qian tang ao bu – Passo avanti guadando","Yan shou gong quan – Pugno coperto",
+  "Gao tan ma – Accarezzare il cavallo alto","Zuo deng yi gen – Calcio col tallone sinistro",
+  "Yu nü chuan suo – La fanciulla di giada al telaio","Yun shou – Mani come nuvole",
+  "Zhuan shen shuang bai lian – Doppio loto girando il corpo","Dang tou pao – Cannone in testa",
+  "Jingang daodui – Il guardiano pesta il mortaio (2)","Shoushi – Chiusura"
+];
+const N = NAMES.length;
+const REF_KEY = "taiji_ref_forma18";
+const SAMPLE_MS = 80;                 // ~12 fps di campionamento
+// posizioni FINALI di ogni figura nel video (secondi) — fornite dall'utente
+const TS_FINAL = [8,38,52,66,85,95,114,118,128,139,147,158,166,181,185,191,197,208];
+const IDX = [11,12,13,14,15,16,23,24,25,26,27,28]; // spalle,gomiti,polsi,anche,ginocchia,caviglie
+
+const $ = id => document.getElementById(id);
+const EMBED = new URLSearchParams(location.search).has('embed');  // dentro l'app: solo "Allenati", riferimento pronto
+let bundledRef = null;
+const video=$("cam"), ov=$("ov"), ctx=ov.getContext("2d");
+let landmarker=null, running=false, rafActive=false, mode="vid";
+let lastSample=0, lastT=performance.now(), fpsEMA=0;
+
+// ---- Voce ----
+let voceIt=null;
+function initVoce(){
+  const pick=()=>{const vs=speechSynthesis.getVoices().filter(v=>v.lang.startsWith("it"));
+    voceIt=vs.find(v=>/natur|enhanced|premium/i.test(v.name))||vs[0]||null;};
+  pick(); speechSynthesis.onvoiceschanged=pick;
+}
+function parla(str){
+  if(!$("voice").checked) return;
+  const u=new SpeechSynthesisUtterance(str.split("–").pop().trim());
+  u.lang="it-IT"; u.rate=0.95; if(voceIt) u.voice=voceIt;
+  speechSynthesis.cancel(); speechSynthesis.speak(u);
+}
+
+// ---- Feature di posa: invariante a posizione e taglia ----
+function feature(lm){
+  const hx=(lm[23].x+lm[24].x)/2, hy=(lm[23].y+lm[24].y)/2;       // centro anche
+  const sx=(lm[11].x+lm[12].x)/2, sy=(lm[11].y+lm[12].y)/2;       // centro spalle
+  const scale=Math.hypot(sx-hx,sy-hy)||0.001;                     // lunghezza tronco
+  const f=[], v=[];
+  for(const i of IDX){
+    f.push((lm[i].x-hx)/scale, (lm[i].y-hy)/scale);
+    v.push(lm[i].visibility ?? 1);
+  }
+  const visMean=v.reduce((a,b)=>a+b,0)/v.length;
+  return {f, v, visMean};
+}
+// peso per articolazione: braccia/busto contano molto, gambe poco
+// (l'altezza delle posizioni varia tra praticanti → le gambe sono inaffidabili)
+//   ordine IDX: spalle, gomiti, polsi, anche, ginocchia, caviglie
+const KW=[1.0,1.0, 1.0,1.0, 1.8,1.8, 0.6,0.6, 0.6,0.6, 0.5,0.5];
+const GAPW=8;          // peso forte alla distanza tra i polsi (mani unite vs separate)
+// distanza pesata per visibilità, articolazione E distanza-mani (0 = identiche)
+function dist(a,b){
+  let s=0, w=0;
+  for(let k=0;k<a.v.length;k++){
+    const wk=Math.min(a.v[k],b.v[k])*KW[k];
+    const dx=a.f[2*k]-b.f[2*k], dy=a.f[2*k+1]-b.f[2*k+1];
+    s += wk*(dx*dx+dy*dy); w += wk;
+  }
+  // distanza tra i polsi (k=4 sx, k=5 dx): distingue mani unite (guardiano) da separate (apertura)
+  const gA=Math.hypot(a.f[8]-a.f[10], a.f[9]-a.f[11]);
+  const gB=Math.hypot(b.f[8]-b.f[10], b.f[9]-b.f[11]);
+  const wg=Math.min(a.v[4],a.v[5],b.v[4],b.v[5])*GAPW, dg=gA-gB;
+  s += wg*dg*dg; w += wg;
+  return w? Math.sqrt(s/w) : 99;
+}
+
+// ---- Disegno scheletro ----
+function disegna(lm){
+  ov.width=video.videoWidth; ov.height=video.videoHeight;
+  ctx.clearRect(0,0,ov.width,ov.height);
+  ctx.lineWidth=3; ctx.strokeStyle="rgba(217,179,92,.9)";
+  for(const c of PoseLandmarker.POSE_CONNECTIONS){
+    const a=lm[c.start], b=lm[c.end];
+    if((a.visibility??1)<0.4||(b.visibility??1)<0.4) continue;
+    ctx.beginPath(); ctx.moveTo(a.x*ov.width,a.y*ov.height);
+    ctx.lineTo(b.x*ov.width,b.y*ov.height); ctx.stroke();
+  }
+  ctx.fillStyle="rgba(63,169,140,.95)";
+  for(const i of IDX){ const p=lm[i]; if((p.visibility??1)<0.4) continue;
+    ctx.beginPath(); ctx.arc(p.x*ov.width,p.y*ov.height,4,0,7); ctx.fill(); }
+}
+
+function mostraFigura(i){
+  i=Math.max(0,Math.min(N-1,i));
+  const [pin,nome]=NAMES[i].split("–").map(s=>s.trim());
+  $("fnum").textContent=`Figura ${i+1} / ${N}`;
+  $("fnome").textContent=nome||pin; $("fpin").textContent=nome?pin:"";
+}
+
+// =================== CAMERA + MODELLO ===================
+let camError="";
+async function ensureModel(){
+  if(landmarker) return true;
+  try{
+    const fs=await FilesetResolver.forVisionTasks(
+      "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/wasm");
+    landmarker=await PoseLandmarker.createFromOptions(fs,{
+      baseOptions:{modelAssetPath:
+        "https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/1/pose_landmarker_lite.task",
+        delegate:"GPU"}, runningMode:"VIDEO", numPoses:1});
+  }catch(e){ camError="modello non caricato (rete?). "+e.message; return false; }
+  return true;
+}
+async function ensureCamera(){
+  if(video.srcObject && landmarker) return true;
+  // contesto sicuro? (Chrome blocca la camera su http:// e file://)
+  if(!window.isSecureContext || !navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+    camError="serve HTTPS. Apri la pagina via https:// (es. pubblicandola su Netlify) — su file:// o http:// il browser blocca la camera.";
+    return false;
+  }
+  if(!video.srcObject){
+    try{
+      const stream=await navigator.mediaDevices.getUserMedia({
+        video:{facingMode:"user",width:{ideal:720},height:{ideal:960}},audio:false});
+      video.srcObject=stream; await video.play();
+    }catch(e){
+      camError = e.name==="NotAllowedError" ? "permesso negato. Tocca il lucchetto in alto e consenti la fotocamera, poi riprova."
+        : e.name==="NotFoundError" ? "nessuna fotocamera trovata sul dispositivo."
+        : e.name==="NotReadableError" ? "fotocamera occupata da un'altra app: chiudila e riprova."
+        : (e.name+": "+e.message);
+      return false;
+    }
+  }
+  return await ensureModel();
+}
+
+// =================== COSTRUISCI RIFERIMENTO DA VIDEO ===================
+function seekTo(v,t){ return new Promise(res=>{ v.onseeked=()=>res(); v.currentTime=Math.min(t, v.duration-0.02); }); }
+const r3 = x => Math.round(x*1000)/1000;
+
+// ===== BANCA DI ESEMPI (per migliorare il riconoscimento nel tempo) =====
+const MAX_BANK=50;                 // max esempi per figura (limita la dimensione del file)
+function banksFromVideoFrames(frames){
+  const fps=1000/SAMPLE_MS, banks=[];
+  for(let j=0;j<TS_FINAL.length;j++){
+    const c=Math.round(TS_FINAL[j]*fps), set=[];
+    for(let k=c-8;k<=c+4;k++){ if(k>=0 && k<frames.length) set.push(frames[k]); }
+    banks.push(set.length? set : [frames[Math.min(c,frames.length-1)]]);
+  }
+  return banks;
+}
+function banksFromRecording(frames, bounds){
+  const banks=[], K=13;            // ultimi ~1s di ogni figura = la posa tenuta
+  for(let j=0;j<NAMES.length;j++){
+    const end=(j+1<bounds.length)? bounds[j+1] : frames.length, set=[];
+    for(let k=Math.max(bounds[j]||0, end-K); k<end; k++){ if(frames[k]) set.push(frames[k]); }
+    banks.push(set.length? set : [frames[Math.min(bounds[j]||0, frames.length-1)]]);
+  }
+  return banks;
+}
+function deriveSettles(r){          // banche da un riferimento caricato (nuovo formato o vecchio)
+  if(r.settles) return r.settles;
+  if(r.frames) return banksFromVideoFrames(r.frames);
+  return null;
+}
+function mergeBanks(oldB,newB){     // fonde gli esempi vecchi + nuovi, con sottocampionamento al tetto
+  const out=[];
+  for(let j=0;j<NAMES.length;j++){
+    let m=((oldB&&oldB[j])||[]).concat((newB&&newB[j])||[]);
+    if(m.length>MAX_BANK){ const st=m.length/MAX_BANK, s=[]; for(let i=0;i<MAX_BANK;i++) s.push(m[Math.floor(i*st)]); m=s; }
+    out.push(m);
+  }
+  return out;
+}
+function saveSettles(newBanks, addMode){
+  let banks=newBanks, added=false;
+  if(addMode){
+    const raw=localStorage.getItem(REF_KEY);
+    if(raw){ try{ const ex=deriveSettles(JSON.parse(raw)); if(ex){ banks=mergeBanks(ex,newBanks); added=true; } }catch(e){} }
+  }
+  const json=JSON.stringify({form:"forma-18",version:3,names:NAMES,settles:banks});
+  try{ localStorage.setItem(REF_KEY,json); }catch(e){}
+  return {json, added, tot:banks.reduce((a,b)=>a+b.length,0)};
+}
+
+async function buildFromVideo(file){
+  $("vidLog").textContent="Carico il modello…";
+  if(!await ensureModel()){ $("vidLog").textContent="Errore: "+camError; return; }
+  const v=document.createElement("video");
+  v.muted=true; v.playsInline=true; v.preload="auto";
+  v.style.cssText="position:fixed;left:-9999px;width:320px";
+  document.body.appendChild(v);
+  v.src=URL.createObjectURL(file);
+  await new Promise(r=>{ v.onloadedmetadata=r; });
+  const dur=v.duration, step=SAMPLE_MS/1000, frames=[]; let ts=0;
+  $("vidLog").textContent="Analisi pose in corso…";
+  for(let t=0; t<dur; t+=step){
+    await seekTo(v,t); ts+=SAMPLE_MS;
+    let lm=null;
+    try{ lm=landmarker.detectForVideo(v, ts).landmarks?.[0]; }catch(e){}
+    if(lm){ const fe=feature(lm); frames.push({f:fe.f.map(r3), v:fe.v.map(r3)}); }
+    else frames.push({f:new Array(24).fill(0), v:new Array(12).fill(0)}); // nessuna persona: vis 0 → ignorato
+    if(frames.length%20===0){
+      $("vidBar").style.width=Math.round(t/dur*100)+"%";
+      $("vidLog").textContent=`Analisi… ${Math.round(t)}s / ${Math.round(dur)}s`;
+      await new Promise(r=>setTimeout(r,0));
+    }
+  }
+  v.remove();
+  const banks=banksFromVideoFrames(frames);
+  const {json, added, tot}=saveSettles(banks, $("vidAdd").checked);
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([json],{type:"application/json"}));
+  a.download="riferimento-forma18.json"; a.click();
+  refreshRefState();
+  $("vidBar").style.width="100%";
+  $("vidLog").textContent=`Fatto: ${frames.length} campioni. ${added?"Aggiunto al riferimento":"Riferimento creato"} (${tot} esempi totali). Scaricato. Vai su “② Allenati”.`;
+}
+
+// =================== REGISTRAZIONE RIFERIMENTO ===================
+let recOn=false, recFrames=[], recBounds=[0], recFig=0;
+async function recStart(){
+  $("recLog").textContent="Avvio camera…";
+  if(!await ensureCamera()){ $("recLog").textContent="Camera non disponibile: "+camError; $("recStart").disabled=false; return; }
+  recOn=true; recFrames=[]; recBounds=[0]; recFig=0;
+  $("recStart").disabled=true; $("recNext").disabled=false; $("recSave").disabled=false;
+  mostraFigura(0);
+  $("recLog").textContent="REC · Figura 1. Esegui e tocca “Figura successiva” a ogni cambio.";
+  startLoop();
+}
+function recNext(){
+  if(recFig>=N-1) return;
+  recBounds.push(recFrames.length);   // qui inizia la figura successiva
+  recFig++; mostraFigura(recFig);
+  $("recBar").style.width=Math.round(recFig/(N-1)*100)+"%";
+  $("recLog").textContent=`REC · Figura ${recFig+1} di ${N}`;
+  if(recFig===N-1) $("recLog").textContent=`REC · Ultima figura. Poi “Fine e salva”.`;
+}
+function recSave(){
+  recOn=false; running=false;
+  const banks=banksFromRecording(recFrames, recBounds);
+  const {json, added, tot}=saveSettles(banks, $("recAdd").checked);
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([json],{type:"application/json"}));
+  a.download="riferimento-forma18.json"; a.click();
+  $("recStart").disabled=false; $("recNext").disabled=true; $("recSave").disabled=true;
+  refreshRefState();
+  $("recLog").textContent=`${added?"Aggiunto al riferimento":"Salvato"}: ${recBounds.length} figure, ${tot} esempi totali.`;
+}
+function recDownload(){
+  const raw=localStorage.getItem(REF_KEY); if(!raw) return;
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([raw],{type:"application/json"}));
+  a.download="riferimento-forma18.json"; a.click();
+}
+function recClear(){
+  localStorage.removeItem(REF_KEY); refreshRefState();
+  $("recLog").textContent="Riferimento cancellato.";
+}
+function refreshRefState(){
+  const raw=localStorage.getItem(REF_KEY);
+  let ok=false;
+  let tot=0;
+  if(raw){ try{ const r=JSON.parse(raw); const b=deriveSettles(r); ok=!!(b&&b.length); if(ok) tot=b.reduce((a,x)=>a+x.length,0); }catch(e){} }
+  $("refState").textContent= ok? `presente ✓ (${tot} esempi)` : "nessuno";
+  $("refStateV").textContent= ok? "presente ✓" : "nessuno";
+  $("recDownload").disabled=!ok;
+  $("playStart").disabled=!ok;
+  $("playLog").textContent= ok? "Riferimento pronto. Premi “Inizia allenamento”."
+    : "Manca il riferimento: registralo nella scheda ①, oppure caricalo (.json).";
+}
+
+// =================== PRATICA (riconoscimento) ===================
+let ref=null, SREF=[], curFig=0, announced=false, analysing=false;
+let liveHist=[], stillStart=0, identified=false, started=false;
+const STILL=0.045;     // soglia di immobilità misurata su ~0.5s: sotto = fermo
+const DELAY=6;         // campioni di storia (~0.5s) per misurare il movimento
+const IDENT_MS=400;    // tempo da fermo prima di riconoscere a che figura sei
+const ACCEPT=1.3;      // distanza massima per accettare il riconoscimento
+const AHEAD=4;         // quante figure avanti può riconoscere rispetto a dove sei
+
+// movimento pesato come la distanza: braccia/busto contano, gambe quasi no
+// (così lo sfarfallio delle gambe in controluce non fa sembrare "in movimento" chi è fermo)
+function moto(a,b){ let s=0,w=0; for(let k=0;k<KW.length;k++){const dx=a[2*k]-b[2*k],dy=a[2*k+1]-b[2*k+1]; s+=KW[k]*(dx*dx+dy*dy); w+=KW[k];} return Math.sqrt(s/w); }
+// per ogni figura prende UNA MANCIATA di fotogrammi attorno alla posizione finale
+// (~0.7s): la posa tenuta dall'allievo aggancia più facilmente di un singolo frame
+function buildSettles(){            // usa la banca (nuovo formato) o la deriva dal vecchio
+  SREF = deriveSettles(ref) || [];
+}
+// distanza dalla figura = miglior corrispondenza tra i suoi fotogrammi
+function settleDist(live, set){
+  let best=1e9;
+  for(const fr of set){ const d=dist(live, fr); if(d<best) best=d; }
+  return best;
+}
+// INERZIA: resta sulla figura corrente e avanza SOLO se una figura avanti combacia
+// nettamente meglio. Evita i salti tra pose simili (apertura↔guardiano) e in mezzo alla forma.
+function nearestSettle(live){
+  const hi=Math.min(SREF.length-1, curFig+AHEAD);
+  const dCur=settleDist(live, SREF[curFig]);
+  let aBest=-1, aD=1e9;
+  for(let j=curFig+1; j<=hi; j++){
+    const d=settleDist(live, SREF[j]);
+    if(d<aD){ aD=d; aBest=j; }
+  }
+  if(aBest>=0 && aD < dCur*0.91) return {best:aBest, bestD:aD};  // avanza solo se nettamente meglio
+  return {best:curFig, bestD:dCur};
+}
+
+function loadRef(){
+  if(bundledRef){ ref=bundledRef; return (ref.settles?.length>0)||(ref.frames?.length>0); }
+  const raw=localStorage.getItem(REF_KEY); if(!raw) return false;
+  try{ ref=JSON.parse(raw); return (ref.settles?.length>0)||(ref.frames?.length>0); }catch(e){ return false; }
+}
+function figAt(pos){
+  let fig=0;
+  for(let i=0;i<ref.bounds.length;i++){ if(ref.bounds[i]<=pos) fig=i; else break; }
+  return fig;
+}
+function prossimaFigura(pos){
+  for(let i=0;i<ref.bounds.length;i++){ if(ref.bounds[i]>pos) return i; }
+  return -1; // forma finita
+}
+
+async function playStart(){
+  if(!loadRef()){ $("playLog").textContent="Riferimento non valido."; return; }
+  initVoce();
+  $("playLog").textContent="Avvio camera…";
+  if(!await ensureCamera()){ $("playLog").textContent="Camera non disponibile: "+camError; $("playStart").disabled=false; return; }
+  buildSettles();
+  $("playStart").disabled=true;
+  analysing=false; startLoop();
+  parla(NAMES[0]); speechSynthesis.cancel();   // sblocca solo il canale audio
+  await preparazione();
+  // avvio riconoscimento
+  curFig=0; announced=false; identified=false; started=false; stillStart=0; liveHist=[]; analysing=true;
+  $("playPrev").disabled=false; $("playNext").disabled=false;
+  mostraFigura(0); parla(NAMES[0]);
+  $("playLog").textContent="Riconoscimento attivo. L'app ti segue.";
+}
+
+function preparazione(){
+  return new Promise(res=>{
+    let sec=parseInt($("prep").value,10); const cd=$("cd");
+    if(sec<=0) return res();
+    cd.classList.add("show"); $("cdnum").textContent=sec;
+    const t=setInterval(()=>{ sec--;
+      if(sec>0) $("cdnum").textContent=sec;
+      else{ clearInterval(t); cd.classList.remove("show"); res(); }
+    },1000);
+  });
+}
+
+function aggiornaAllineamento(live, now){
+  if(live.visMean<0.3) return;           // perdita quasi totale (fuori inquadratura)
+  const m=$("match");
+
+  // movimento misurato su ~0.5s (il tremolio della stima posa si media via)
+  liveHist.push(live.f); if(liveHist.length>DELAY+1) liveHist.shift();
+  const motion = liveHist.length>DELAY ? moto(liveHist[0], live.f) : 1;
+  if(motion>0.025) started=true;         // anche il movimento leggero dell'apertura avvia il riconoscimento
+  const moving = motion > STILL;
+
+  if(moving){                            // mentre ti muovi: non parlare, aspetta che ti fermi
+    stillStart=0; identified=false; announced=false;
+    m.className="badge match-ok"; m.textContent="in movimento";
+    return;
+  }
+  if(!started){                          // fermo ma non hai ancora iniziato: resta sull'apertura
+    m.className="badge match-ok"; m.textContent="pronto · figura 1";
+    return;
+  }
+
+  // sei fermo (dopo aver iniziato)
+  if(!stillStart) stillStart=now;
+
+  // 1) appena fermo: riconosci a che figura sei (posa più vicina tra le 18 pose-chiave)
+  if(!identified && now-stillStart>IDENT_MS){
+    identified=true;
+    const r=nearestSettle(live);
+    if(r.best>=0 && r.bestD<ACCEPT){
+      curFig=r.best; mostraFigura(curFig);
+      m.className="badge match-ok"; m.textContent="fermo · figura "+(curFig+1);
+    } else { m.className="badge match-lost"; m.textContent="posa non chiara"; }
+  }
+
+  // 2) fermo a lungo = bloccato → annuncia la figura successiva
+  const stallMs=parseFloat($("stall").value)*1000;
+  if(!announced && now-stillStart>stallMs){
+    announced=true;
+    const nf=curFig+1;
+    if(nf<NAMES.length){
+      parla(NAMES[nf]); $("playLog").textContent=`Suggerito → ${NAMES[nf]}`;
+      m.className="badge match-stuck"; m.textContent="bloccato";
+    } else $("playLog").textContent="Forma completata.";
+  }
+}
+
+// =================== LOOP COMUNE ===================
+function startLoop(){ if(!rafActive){ rafActive=true; running=true; loop(); } }
+function loop(){
+  if(!running){ rafActive=false; return; }
+  const now=performance.now();
+  const res=landmarker.detectForVideo(video, now);
+  const fps=1000/Math.max(1,now-lastT); lastT=now;
+  fpsEMA=fpsEMA?fpsEMA*0.9+fps*0.1:fps; $("fps").textContent=Math.round(fpsEMA)+" fps";
+  const lm=res.landmarks?.[0];
+  if(lm){
+    disegna(lm);
+    if(now-lastSample>=SAMPLE_MS){
+      lastSample=now;
+      const fe=feature(lm);
+      if(mode==="rec" && recOn) recFrames.push({f:fe.f, v:fe.v});
+      if(mode==="play" && analysing) aggiornaAllineamento(fe, now);
+    }
+  }
+  requestAnimationFrame(loop);
+}
+
+// =================== TAB / EVENTI ===================
+function setMode(m){
+  mode=m;
+  $("tabVid").classList.toggle("on", m==="vid");
+  $("tabRec").classList.toggle("on", m==="rec");
+  $("tabPlay").classList.toggle("on", m==="play");
+  $("panelVid").classList.toggle("on", m==="vid");
+  $("panelRec").classList.toggle("on", m==="rec");
+  $("panelPlay").classList.toggle("on", m==="play");
+}
+$("tabVid").onclick=()=>setMode("vid");
+$("tabRec").onclick=()=>setMode("rec");
+$("tabPlay").onclick=()=>setMode("play");
+$("vidFile").onchange=e=>{ const f=e.target.files[0]; if(f) buildFromVideo(f); };
+
+$("recStart").onclick=recStart;
+$("recNext").onclick=recNext;
+$("recSave").onclick=recSave;
+$("recDownload").onclick=recDownload;
+$("recClear").onclick=recClear;
+
+$("playStart").onclick=playStart;
+$("playPrev").onclick=()=>{ curFig=Math.max(0,curFig-1); started=true; identified=true; mostraFigura(curFig); parla(NAMES[curFig]); };
+$("playNext").onclick=()=>{ curFig=Math.min(N-1,curFig+1); started=true; identified=true; mostraFigura(curFig); parla(NAMES[curFig]); };
+$("playLoad").onchange=async e=>{
+  const file=e.target.files[0]; if(!file) return;
+  const txt=await file.text();
+  try{ JSON.parse(txt); localStorage.setItem(REF_KEY,txt); refreshRefState();
+    $("playLog").textContent="Riferimento caricato."; }
+  catch(err){ $("playLog").textContent="File non valido."; }
+};
+$("stall").oninput=e=>$("stallv").textContent=e.target.value;
+$("prep").oninput=e=>$("prepv").textContent=e.target.value;
+
+mostraFigura(0);
+refreshRefState();
+
+// ===== MODALITÀ EMBED (dentro l'app): solo "Allenati", colori dal tema, riferimento pronto =====
+function syncTheme(){
+  try{
+    const cs=getComputedStyle(window.parent.document.documentElement);
+    ["--bg","--bg2","--card","--card2","--line","--line2","--txt","--mut","--red","--red2","--gold","--gold2","--jade","--jade2","--ink"]
+      .forEach(v=>{ const val=cs.getPropertyValue(v); if(val&&val.trim()) document.documentElement.style.setProperty(v, val.trim()); });
+  }catch(e){}
+}
+async function loadBundled(){
+  try{
+    const r=await fetch("riferimento-forma18.json",{cache:"force-cache"});
+    if(!r.ok) throw 0;
+    bundledRef=await r.json();
+    $("playStart").disabled=false;
+    const tot=(bundledRef.settles||[]).reduce((a,b)=>a+(b?b.length:0),0);
+    $("playLog").textContent=`Riferimento pronto${tot?` (${tot} esempi)`:""}. Premi “Inizia allenamento”.`;
+  }catch(e){
+    $("playLog").textContent="Riferimento non trovato. Va pubblicato riferimento-forma18.json accanto all'app.";
+  }
+}
+if(EMBED){
+  syncTheme();
+  const tb=document.querySelector(".tabs"); if(tb) tb.style.display="none";
+  const h1=document.querySelector("h1"); if(h1) h1.style.display="none";
+  const ld=$("playLoad"); if(ld&&ld.parentElement) ld.parentElement.style.display="none"; // riferimento già incluso
+  setMode("play");
+  loadBundled();
+}
+</script>
+</body>
+</html>

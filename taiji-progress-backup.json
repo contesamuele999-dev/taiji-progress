@@ -1,0 +1,2219 @@
+{
+ "csg": [
+  {
+   "g": "Esercizi",
+   "s": 2,
+   "t": "Esercizio 1",
+   "id": "fmqaz9ftxu8er",
+   "zh": "纏",
+   "note": ""
+  },
+  {
+   "g": "Esercizi",
+   "s": 2,
+   "t": "Esercizio 2",
+   "id": "fmqaz9ftxd1fc",
+   "zh": "纏",
+   "note": ""
+  },
+  {
+   "g": "Esercizi",
+   "s": 2,
+   "t": "Esercizio 3",
+   "id": "fmqaz9ftx1s83",
+   "zh": "纏",
+   "note": ""
+  },
+  {
+   "g": "Esercizi",
+   "s": 2,
+   "t": "Esercizio 4",
+   "id": "fmqaz9ftx8yxw",
+   "zh": "纏",
+   "note": ""
+  },
+  {
+   "g": "Esercizi",
+   "s": 2,
+   "t": "Esercizio 5",
+   "id": "fmqaz9ftxoc3a",
+   "zh": "纏",
+   "note": ""
+  },
+  {
+   "g": "Xinjia 新架 (moderna)",
+   "s": 0,
+   "t": "Spirale al centro in Qi Shi",
+   "id": "fmqaz9ftx9gk6",
+   "zh": "新",
+   "note": ""
+  },
+  {
+   "g": "Xinjia 新架 (moderna)",
+   "s": 0,
+   "t": "Spirale sulla colonna in Qi Shi",
+   "id": "fmqaz9ftx407h",
+   "zh": "新",
+   "note": ""
+  },
+  {
+   "g": "Xinjia 新架 (moderna)",
+   "s": 0,
+   "t": "L’airone spiega le ali con spirale piccola",
+   "id": "fmqaz9ftxeu7f",
+   "zh": "新",
+   "note": ""
+  },
+  {
+   "g": "Xinjia 新架 (moderna)",
+   "s": 0,
+   "t": "Lan Zha Yi con spirale piccola",
+   "id": "fmqaz9ftxqnb6",
+   "zh": "新",
+   "note": ""
+  }
+ ],
+ "tab": "armi",
+ "ver": 4,
+ "lvV2": true,
+ "palo": [
+  {
+   "t": "Hun Yuan Zhuang 混元樁 – Abbracciare l’albero (classico)",
+   "id": "fmqaz9ftxyf6n",
+   "zh": "混",
+   "times": [
+    {
+     "d": "12/06/26",
+     "ms": 3328
+    }
+   ]
+  },
+  {
+   "t": "Wuji Zhuang 無極樁 – Posizione primordiale (braccia ai fianchi)",
+   "id": "fmqaz9ftx17li",
+   "zh": "無",
+   "times": []
+  },
+  {
+   "t": "Hun Yuan basso 下盤 – mani al dantian inferiore",
+   "id": "fmqaz9ftxo9zw",
+   "zh": "下",
+   "times": []
+  },
+  {
+   "t": "Hun Yuan alto 上盤 – mani all’altezza del viso",
+   "id": "fmqaz9ftxpv3e",
+   "zh": "上",
+   "times": []
+  }
+ ],
+ "comps": [],
+ "forms": [
+  {
+   "id": "forma-18",
+   "cat": "mano",
+   "lvl": "pri",
+   "name": "Forma 18 (Chen Zhenglei)",
+   "note": "",
+   "times": [],
+   "video": "https://www.youtube.com/results?search_query=chen+zhenglei+18+form+taijiquan",
+   "custom": false,
+   "details": [],
+   "figures": [
+    {
+     "n": "Qǐshì – Apertura",
+     "s": 2,
+     "t": null
+    },
+    {
+     "n": "Jingang daodui – Il guardiano pesta il mortaio",
+     "s": 2,
+     "t": null
+    },
+    {
+     "n": "Lan zha yi – Allacciare pigramente la veste",
+     "s": 2,
+     "t": null
+    },
+    {
+     "n": "Liu feng si bi – Sei sigilli e quattro chiusure",
+     "s": 2,
+     "t": null
+    },
+    {
+     "n": "Dan bian – Frusta semplice",
+     "s": 2,
+     "t": null
+    },
+    {
+     "n": "Bai e liang chi – La gru bianca spiega le ali",
+     "s": 2,
+     "t": null
+    },
+    {
+     "n": "Xie xing – Passo obliquo",
+     "s": 2,
+     "t": null
+    },
+    {
+     "n": "Lou xi – Spazzolare il ginocchio",
+     "s": 2,
+     "t": null
+    },
+    {
+     "n": "Qian tang ao bu – Passo avanti guadando",
+     "s": 2,
+     "t": null
+    },
+    {
+     "n": "Yan shou gong quan – Pugno coperto",
+     "s": 2,
+     "t": null
+    },
+    {
+     "n": "Gao tan ma – Accarezzare il cavallo alto",
+     "s": 2,
+     "t": null
+    },
+    {
+     "n": "Zuo deng yi gen – Calcio col tallone sinistro",
+     "s": 2,
+     "t": null
+    },
+    {
+     "n": "Yu nü chuan suo – La fanciulla di giada al telaio",
+     "s": 2,
+     "t": null
+    },
+    {
+     "n": "Yun shou – Mani come nuvole",
+     "s": 2,
+     "t": null
+    },
+    {
+     "n": "Zhuan shen shuang bai lian – Doppio loto girando il corpo",
+     "s": 2,
+     "t": null
+    },
+    {
+     "n": "Dang tou pao – Cannone in testa",
+     "s": 2,
+     "t": null
+    },
+    {
+     "n": "Jingang daodui – Il guardiano pesta il mortaio (2)",
+     "s": 2,
+     "t": null
+    },
+    {
+     "n": "Shoushi – Chiusura",
+     "s": 2,
+     "t": null
+    }
+   ]
+  },
+  {
+   "id": "laojia-yilu",
+   "cat": "mano",
+   "lvl": "int",
+   "name": "Laojia Yilu 老架一路",
+   "note": "",
+   "times": [],
+   "video": "https://www.youtube.com/results?search_query=chen+taijiquan+laojia+yilu",
+   "custom": false,
+   "details": [],
+   "figures": [
+    {
+     "n": "Qǐshì – Apertura",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Jingang daodui – Il guardiano pesta il mortaio",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Lan zha yi – Allacciare pigramente la veste",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Liu feng si bi – Sei sigilli e quattro chiusure",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dan bian – Frusta semplice",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Jingang daodui – Il guardiano pesta il mortaio (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Bai e liang chi – La gru bianca spiega le ali",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Xie xing – Passo obliquo",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Lou xi – Spazzolare il ginocchio",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Shang san bu – Tre passi avanti",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Xie xing – Passo obliquo (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Lou xi – Spazzolare il ginocchio (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Shang san bu – Tre passi avanti (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yan shou gong quan – Pugno coperto",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Jingang daodui – Il guardiano pesta il mortaio (3)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Pie shen quan – Pugno girando il corpo",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Qing long chu shui – Il drago verde esce dall'acqua",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Shuang tui shou – Doppia spinta con le mani",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zhou di kan quan – Pugno sotto il gomito",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dao juan gong – Indietreggiare avvolgendo le braccia",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Bai e liang chi – La gru bianca spiega le ali (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Xie xing – Passo obliquo (3)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Shan tong bei – Lampo attraverso la schiena",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yan shou gong quan – Pugno coperto (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Liu feng si bi – Sei sigilli e quattro chiusure (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dan bian – Frusta semplice (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yun shou – Mani come nuvole",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Gao tan ma – Accarezzare il cavallo alto",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "You ca jiao – Strofinare il piede destro",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zuo ca jiao – Strofinare il piede sinistro",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zuo deng yi gen – Calcio col tallone sinistro",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Shang san bu – Tre passi avanti (3)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Ji di chui – Pugno verso il suolo",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Ti er qi – Doppio calcio volante",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Hu xin quan – Proteggere il cuore",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Xuan feng jiao – Calcio del turbine",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "You deng yi gen – Calcio col tallone destro",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yan shou gong quan – Pugno coperto (3)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Xiao qin da – Piccola presa e colpo",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Bao tou tui shan – Abbracciare la testa e spingere il monte",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Liu feng si bi – Sei sigilli e quattro chiusure (3)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dan bian – Frusta semplice (3)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Qian zhao – Manovra in avanti",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Hou zhao – Manovra indietro",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Ye ma fen zong – Dividere la criniera del cavallo selvaggio",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Liu feng si bi – Sei sigilli e quattro chiusure (4)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dan bian – Frusta semplice (4)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yu nü chuan suo – La fanciulla di giada al telaio",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Lan zha yi – Allacciare pigramente la veste (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Liu feng si bi – Sei sigilli e quattro chiusure (5)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dan bian – Frusta semplice (5)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yun shou – Mani come nuvole (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Bai jiao die cha – Calcio a ventaglio e spaccata",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Jin ji du li – Il gallo d'oro su una zampa (sx e dx)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dao juan gong – Indietreggiare avvolgendo le braccia (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Bai e liang chi – La gru bianca spiega le ali (3)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Xie xing – Passo obliquo (4)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Shan tong bei – Lampo attraverso la schiena (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yan shou gong quan – Pugno coperto (4)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Liu feng si bi – Sei sigilli e quattro chiusure (6)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dan bian – Frusta semplice (6)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yun shou – Mani come nuvole (3)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Gao tan ma – Accarezzare il cavallo alto (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Shi zi jiao – Calcio incrociato",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zhi dang chui – Pugno all'inguine",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yuan hou tan guo – La scimmia offre il frutto",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dan bian – Frusta semplice (7)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Que di long – Il drago striscia a terra",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Shang bu qi xing – Passo avanti sette stelle",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Xia bu kua gong – Passo indietro cavalcando la tigre",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Shuang bai lian – Doppio calcio del loto",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dang tou pao – Cannone in testa",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Jingang daodui – Il guardiano pesta il mortaio (4)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Shoushi – Chiusura",
+     "s": 0,
+     "t": null
+    }
+   ]
+  },
+  {
+   "id": "laojia-erlu",
+   "cat": "mano",
+   "lvl": "int",
+   "name": "Laojia Erlu 老架二路 (Pao Chui)",
+   "note": "",
+   "times": [],
+   "video": "https://www.youtube.com/results?search_query=chen+taijiquan+laojia+erlu+pao+chui",
+   "custom": false,
+   "details": [],
+   "figures": [
+    {
+     "n": "Qǐshì – Apertura",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Jingang daodui – Il guardiano pesta il mortaio",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Lan zha yi – Allacciare pigramente la veste",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Liu feng si bi – Sei sigilli e quattro chiusure",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dan bian – Frusta semplice",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Hu xin quan – Proteggere il cuore",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Xie xing – Passo obliquo",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Hui tou jingang daodui – Girarsi e pestare il mortaio",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Pie shen quan – Pugno girando il corpo",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zhi dang – Colpo all'inguine",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zhan shou – Mano che taglia",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Fan hua wu xiu – Rovesciare i fiori danzando con le maniche",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yan shou gong quan – Pugno coperto",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yao lan zhou – Gomito che blocca alla vita",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Da gong quan xiao gong quan – Grande e piccolo pugno dell'avambraccio",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yu nü chuan suo – La fanciulla di giada al telaio",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dao qi long – Cavalcare il drago all'indietro",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yan shou gong quan – Pugno coperto (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Guo bian pao – Cannone della frusta avvolgente",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Shou tou shi – Posizione della testa di belva",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Pi jia zi – Fendere l'armatura",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Fan hua wu xiu – Rovesciare i fiori (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yan shou gong quan – Pugno coperto (3)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Fu hu – Sottomettere la tigre",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Mo mei gong – Strofinare il sopracciglio",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Huang long san jiao shui – Il drago giallo agita l'acqua tre volte",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zuo chong – Carica a sinistra",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "You chong – Carica a destra",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yan shou gong quan – Pugno coperto (4)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Sao tang tui – Gamba che spazza",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yan shou gong quan – Pugno coperto (5)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Quan pao chui – Pugno cannone completo",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yan shou gong quan – Pugno coperto (6)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dao cha dao cha – Doppia inserzione",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zuo er gong you er gong – Doppio avambraccio sx e dx",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Hui tou dang men pao – Girarsi, cannone alla porta",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Bian shi da zhuo pao – Cannone della grande presa",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yao lan zhou – Gomito che blocca alla vita (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Shun lan zhou – Gomito che asseconda",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Wo di pao – Cannone nascosto",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Hui tou jing lan zhi ru – Girarsi ed entrare diretti",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Jingang daodui – Il guardiano pesta il mortaio (3)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Shoushi – Chiusura",
+     "s": 0,
+     "t": null
+    }
+   ]
+  },
+  {
+   "id": "xinjia-yilu",
+   "cat": "mano",
+   "lvl": "adv",
+   "name": "Xinjia Yilu 新架一路",
+   "note": "",
+   "times": [],
+   "video": "https://www.youtube.com/results?search_query=chen+taijiquan+xinjia+yilu",
+   "custom": false,
+   "details": [],
+   "figures": [
+    {
+     "n": "Yùbèi shì – Preparazione e apertura",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Jingang daodui – Il guardiano pesta il mortaio",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Lan zha yi – Allacciare pigramente la veste",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Liu feng si bi – Sei sigilli e quattro chiusure",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dan bian – Frusta semplice",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Di er jingang daodui – Secondo guardiano pesta il mortaio",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Bai e liang chi – La gru bianca spiega le ali",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Xie xing ao bu – Passo obliquo",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Chu shou – Prima raccolta",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Qian tang ao bu – Passo avanti guadando",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Di er xie xing – Secondo passo obliquo",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zai shou – Seconda raccolta",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Qian tang ao bu – Passo avanti guadando (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yan shou gong quan – Pugno coperto",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Di san jingang daodui – Terzo guardiano pesta il mortaio",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Pie shen quan – Pugno girando il corpo",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Bei zhe kao – Colpo piegando la schiena",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Qing long chu shui – Il drago verde esce dall'acqua",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Shuang tui shou – Doppia spinta con le mani",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "San huan zhang – Tre cambi di palmo",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zhou di quan – Pugno sotto il gomito",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dao juan gong – Indietreggiare avvolgendo le braccia",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Tui bu ya zhou – Indietreggiare premendo col gomito",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zhong pan – Piatto centrale",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Bai e liang chi – La gru bianca spiega le ali (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Xie xing ao bu – Passo obliquo (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Shan tong bei – Lampo attraverso la schiena",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yan shou gong quan – Pugno coperto (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Liu feng si bi – Sei sigilli e quattro chiusure (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dan bian – Frusta semplice (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yun shou – Mani come nuvole",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Gao tan ma – Accarezzare il cavallo alto",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "You ca jiao – Strofinare il piede destro",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zuo ca jiao – Strofinare il piede sinistro",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zuo deng yi gen – Calcio col tallone sinistro",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Qian tang ao bu – Passo avanti guadando (3)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Ji di chui – Pugno verso il suolo",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Fan shen er qi jiao – Doppio calcio girando il corpo",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Shou tou shi – Posizione della testa di belva",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Xuan feng jiao – Calcio del turbine",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "You deng yi gen – Calcio col tallone destro",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yan shou gong quan – Pugno coperto (3)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Xiao qin da – Piccola presa e colpo",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Bao tou tui shan – Abbracciare la testa e spingere il monte",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "San huan zhang – Tre cambi di palmo (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Liu feng si bi – Sei sigilli e quattro chiusure (3)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dan bian – Frusta semplice (3)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Qian zhao – Manovra in avanti",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Hou zhao – Manovra indietro",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Ye ma fen zong – Dividere la criniera del cavallo selvaggio",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Liu feng si bi – Sei sigilli e quattro chiusure (4)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dan bian – Frusta semplice (4)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yu nü chuan suo – La fanciulla di giada al telaio",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Lan zha yi – Allacciare pigramente la veste (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Liu feng si bi – Sei sigilli e quattro chiusure (5)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dan bian – Frusta semplice (5)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yun shou – Mani come nuvole (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Bai jiao die cha – Calcio a ventaglio e spaccata",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zuo you jin ji du li – Gallo d'oro su una zampa (sx e dx)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dao juan gong – Indietreggiare avvolgendo le braccia (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Tui bu ya zhou – Indietreggiare premendo col gomito (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zhong pan – Piatto centrale (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Bai e liang chi – La gru bianca spiega le ali (3)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Xie xing ao bu – Passo obliquo (3)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Shan tong bei – Lampo attraverso la schiena (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yan shou gong quan – Pugno coperto (4)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Liu feng si bi – Sei sigilli e quattro chiusure (6)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dan bian – Frusta semplice (6)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yun shou – Mani come nuvole (3)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Gao tan ma – Accarezzare il cavallo alto (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Shi zi bai lian – Loto incrociato",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zhi dang chui – Pugno all'inguine",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yuan hou tan guo – La scimmia offre il frutto",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dan bian – Frusta semplice (7)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Que di long – Il drago striscia a terra",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Shang bu qi xing – Passo avanti sette stelle",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Tui bu kua hu – Indietreggiare cavalcando la tigre",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zhuan shen shuang bai lian – Doppio loto girando il corpo",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dang tou pao – Cannone in testa",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Jingang daodui – Il guardiano pesta il mortaio (4)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Shoushi – Chiusura",
+     "s": 0,
+     "t": null
+    }
+   ]
+  },
+  {
+   "id": "xinjia-erlu",
+   "cat": "mano",
+   "lvl": "adv",
+   "name": "Xinjia Erlu 新架二路",
+   "note": "",
+   "times": [],
+   "video": "https://www.youtube.com/results?search_query=chen+taijiquan+xinjia+erlu",
+   "custom": false,
+   "details": [],
+   "figures": [
+    {
+     "n": "Yùbèi shì – Preparazione e apertura",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Jingang daodui – Il guardiano pesta il mortaio",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Lan zha yi – Allacciare pigramente la veste",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Liu feng si bi – Sei sigilli e quattro chiusure",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dan bian – Frusta semplice",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Ban lan zhou – Parare e deviare col gomito",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Hu xin quan – Proteggere il cuore",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Ao bu xie xing – Passo obliquo",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Sha yao ya zhou – Premere il gomito piegando la vita",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Jing lan zhi ru – Entrare diretti al pozzo",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Feng sao mei hua – Il vento spazza i fiori di pruno",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Jingang daodui – Il guardiano pesta il mortaio (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Bi shen quan – Pugno proteggendo il corpo",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Pie shen quan – Pugno girando il corpo",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zhan shou – Mano che taglia",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Fan hua wu xiu – Rovesciare i fiori danzando con le maniche",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yan shou gong quan – Pugno coperto",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Fei bu ao luan zhou – Passo volante, gomito della fenice",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yun shou (qian san) – Mani come nuvole (prime tre)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Gao tan ma – Accarezzare il cavallo alto",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yun shou (hou san) – Mani come nuvole (ultime tre)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Gao tan ma – Accarezzare il cavallo alto (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Lian zhu pao – Cannoni a catena (1)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Lian zhu pao – Cannoni a catena (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Lian zhu pao – Cannoni a catena (3)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dao qi lin – Cavalcare la qilin all'indietro",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Bai she tu xin – Il serpente bianco sputa la lingua (1)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Bai she tu xin – Il serpente bianco sputa la lingua (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Bai she tu xin – Il serpente bianco sputa la lingua (3)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Hai di fan hua – Fiori rovesciati dal fondo del mare",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yan shou gong quan – Pugno coperto (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zhuan shen liu he – Girarsi nelle sei armonie",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zuo guo bian pao – Cannone avvolgente sx (1)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zuo guo bian pao – Cannone avvolgente sx (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "You guo bian pao – Cannone avvolgente dx (1)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "You guo bian pao – Cannone avvolgente dx (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Shou tou shi – Posizione della testa di belva",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Pi jia zi – Fendere l'armatura",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Fan hua wu xiu – Rovesciare i fiori (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yan shou gong quan – Pugno coperto (3)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Fu hu – Sottomettere la tigre",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Mo mei gong – Strofinare il sopracciglio",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "You huang long san jiao shui – Il drago giallo agita l'acqua (dx)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zuo huang long san jiao shui – Il drago giallo agita l'acqua (sx)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zuo deng yi gen – Calcio col tallone sinistro",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "You deng yi gen – Calcio col tallone destro",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Hai di fan hua – Fiori rovesciati dal fondo del mare (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yan shou gong quan – Pugno coperto (4)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Sao tang tui – Gamba che spazza",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yan shou gong quan – Pugno coperto (5)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zuo chong – Carica a sinistra",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "You chong – Carica a destra",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Dao cha – Inserzione all'indietro",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Hai di fan hua – Fiori rovesciati dal fondo del mare (3)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yan shou gong quan – Pugno coperto (6)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Duo er gong – Strappare i due avambracci (1)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Duo er gong – Strappare i due avambracci (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Lian huan pao – Cannoni concatenati",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yu nü chuan suo – La fanciulla di giada al telaio",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Hui tou dang men pao – Girarsi, cannone alla porta",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yu nü chuan suo – La fanciulla di giada al telaio (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Hui tou dang men pao – Girarsi, cannone alla porta (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Pie shen quan – Pugno girando il corpo (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Ao luan zhou – Gomito della fenice contraria",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Shun luan zhou – Gomito della fenice",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Chuan xin zhou – Gomito al cuore",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Wo li pao – Cannone nascosto",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Jing lan zhi ru – Entrare diretti al pozzo (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Feng sao mei hua – Il vento spazza i fiori di pruno (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Jingang daodui – Il guardiano pesta il mortaio (3)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Shoushi – Chiusura",
+     "s": 0,
+     "t": null
+    }
+   ]
+  },
+  {
+   "id": "sciabola-23",
+   "cat": "armi",
+   "lvl": "pri",
+   "name": "Sciabola 單刀 (23)",
+   "note": "",
+   "times": [],
+   "video": "https://www.youtube.com/results?search_query=chen+taiji+dao+sciabola+23",
+   "custom": false,
+   "details": [],
+   "figures": [
+    {
+     "n": "Qǐshì – Apertura",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Hu xin dao – Proteggere il cuore con la sciabola",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Qing long chu shui – Il drago verde esce dall'acqua",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Feng juan can hua – Il vento avvolge i fiori appassiti",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Bai yun gai ding – Le nuvole bianche coprono la testa",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Hei hu sou shan – La tigre nera perlustra la montagna",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Su Qin bei jian – Su Qin porta la spada sulla schiena",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Jin ji du li – Il gallo d'oro su una zampa",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Ying feng gun bi – Rotolare e chiudere controvento",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yao zhan bai she – Tagliare il serpente bianco alla vita",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Ri tao san huan – Tre anelli avvolgono il sole",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Bo yun wang ri – Scostare le nuvole per guardare il sole",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zuo bo cao xun she – Scostare l'erba cercando il serpente (sx)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "You bo cao xun she – Scostare l'erba cercando il serpente (dx)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Qing long chu shui – Il drago verde esce dall'acqua (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Feng juan can hua – Il vento avvolge i fiori appassiti (2)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Yan bie jin chi – L'oca selvatica piega le ali dorate",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Ye cha tan hai – Yecha esplora il mare",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Zuo fan shen kan – Fendente girando il corpo (sx)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "You fan shen kan – Fendente girando il corpo (dx)",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Bai she tu xin – Il serpente bianco sputa la lingua",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Huai zhong bao yue – Abbracciare la luna al petto",
+     "s": 0,
+     "t": null
+    },
+    {
+     "n": "Shoushi – Chiusura",
+     "s": 0,
+     "t": null
+    }
+   ]
+  },
+  {
+   "id": "qimei-gun",
+   "cat": "armi",
+   "lvl": "pri",
+   "name": "Bastone al sopracciglio 齊眉棍",
+   "note": "",
+   "times": [],
+   "video": "https://www.youtube.com/results?search_query=chen+taiji+qi+mei+gun+staff",
+   "custom": false,
+   "details": [],
+   "figures": []
+  },
+  {
+   "id": "spada-49",
+   "cat": "armi",
+   "lvl": "int",
+   "name": "Spada 劍 (49)",
+   "note": "",
+   "times": [],
+   "video": "https://www.youtube.com/results?search_query=chen+taiji+jian+spada+49",
+   "custom": false,
+   "details": [],
+   "figures": []
+  },
+  {
+   "id": "guandao",
+   "cat": "armi",
+   "lvl": "int",
+   "name": "Alabarda 春秋大刀 (Guandao)",
+   "note": "",
+   "times": [],
+   "video": "https://www.youtube.com/results?search_query=chen+taiji+guandao",
+   "custom": false,
+   "details": [],
+   "figures": []
+  },
+  {
+   "id": "ventaglio",
+   "cat": "armi",
+   "lvl": "int",
+   "name": "Ventaglio 太極扇",
+   "note": "",
+   "times": [],
+   "video": "https://www.youtube.com/results?search_query=chen+taiji+fan+ventaglio",
+   "custom": false,
+   "details": [],
+   "figures": []
+  },
+  {
+   "id": "doppia-sciabola",
+   "cat": "armi",
+   "lvl": "adv",
+   "name": "Doppia sciabola 雙刀",
+   "note": "",
+   "times": [],
+   "video": "https://www.youtube.com/results?search_query=chen+taiji+shuang+dao+double+broadsword",
+   "custom": false,
+   "details": [],
+   "figures": []
+  },
+  {
+   "id": "doppia-spada",
+   "cat": "armi",
+   "lvl": "adv",
+   "name": "Doppia spada 雙劍",
+   "note": "",
+   "times": [],
+   "video": "https://www.youtube.com/results?search_query=chen+taiji+shuang+jian+double+sword",
+   "custom": false,
+   "details": [],
+   "figures": []
+  },
+  {
+   "id": "lancia",
+   "cat": "armi",
+   "lvl": "adv",
+   "name": "Lancia 梨花槍",
+   "note": "",
+   "times": [],
+   "video": "https://www.youtube.com/results?search_query=chen+taiji+lancia+pear+flower+spear",
+   "custom": false,
+   "details": [],
+   "figures": []
+  },
+  {
+   "id": "bastone-lungo",
+   "cat": "armi",
+   "lvl": "adv",
+   "name": "Bastone lungo 大桿 (Da Gan)",
+   "note": "",
+   "times": [],
+   "video": "https://www.youtube.com/results?search_query=chen+taiji+long+pole+da+gan",
+   "custom": false,
+   "details": [],
+   "figures": []
+  },
+  {
+   "id": "forma-33",
+   "cat": "mano",
+   "lvl": "comp",
+   "name": "Forma 33 (da competizione)",
+   "note": "",
+   "times": [],
+   "video": "https://www.youtube.com/results?search_query=chen+taijiquan+33+competition+form",
+   "custom": false,
+   "details": [],
+   "figures": []
+  },
+  {
+   "id": "forma-56",
+   "cat": "mano",
+   "lvl": "comp",
+   "name": "Forma 56 (standardizzata da gara) 56式",
+   "note": "",
+   "times": [],
+   "video": "https://www.youtube.com/results?search_query=chen+taijiquan+56+competition+form",
+   "custom": false,
+   "details": [],
+   "figures": []
+  },
+  {
+   "id": "spada-iwuf",
+   "cat": "armi",
+   "lvl": "comp",
+   "name": "Spada 劍 – Standardizzata da gara (IWUF)",
+   "note": "",
+   "times": [],
+   "video": "https://www.youtube.com/results?search_query=iwuf+taijijian+compulsory+sword+form",
+   "custom": false,
+   "details": [],
+   "figures": []
+  }
+ ],
+ "combat": [
+  {
+   "g": "Fondamentali",
+   "s": 2,
+   "t": "1. Pugno 拳 (quán)",
+   "id": "fmqaz9ftxbsdz",
+   "zh": "拳",
+   "note": ""
+  },
+  {
+   "g": "Fondamentali",
+   "s": 2,
+   "t": "2. Calcio 腿 (tuǐ)",
+   "id": "fmqaz9ftxibv1",
+   "zh": "腿",
+   "note": ""
+  },
+  {
+   "g": "Fondamentali",
+   "s": 2,
+   "t": "3. Gomito 肘 (zhǒu)",
+   "id": "fmqaz9ftxa8tn",
+   "zh": "肘",
+   "note": ""
+  },
+  {
+   "g": "Fondamentali",
+   "s": 2,
+   "t": "4. Ginocchio 膝 (xī)",
+   "id": "fmqaz9ftxllsv",
+   "zh": "膝",
+   "note": ""
+  },
+  {
+   "g": "Fondamentali",
+   "s": 2,
+   "t": "5. Palmo 掌 (zhǎng)",
+   "id": "fmqaz9ftxf54a",
+   "zh": "掌",
+   "note": ""
+  },
+  {
+   "g": "Fondamentali",
+   "s": 2,
+   "t": "6. Avambraccio 臂 (bì)",
+   "id": "fmqaz9ftxtbra",
+   "zh": "臂",
+   "note": ""
+  },
+  {
+   "g": "Fondamentali",
+   "s": 1,
+   "t": "7. Spazzate 扫腿 (sǎo tuǐ)",
+   "id": "fmqaz9ftxe9kt",
+   "zh": "掃",
+   "note": ""
+  },
+  {
+   "g": "Condizionamento",
+   "s": 2,
+   "t": "1. Deflettere dall’esterno all’interno",
+   "id": "fmqaz9ftx1h17",
+   "zh": "撥",
+   "note": ""
+  },
+  {
+   "g": "Condizionamento",
+   "s": 2,
+   "t": "2. Deflettere dall’interno all’esterno",
+   "id": "fmqaz9ftxgxol",
+   "zh": "撥",
+   "note": ""
+  },
+  {
+   "g": "Condizionamento",
+   "s": 2,
+   "t": "3. Deflettere di gomito",
+   "id": "fmqaz9ftx40zu",
+   "zh": "撥",
+   "note": ""
+  },
+  {
+   "g": "Condizionamento",
+   "s": 2,
+   "t": "4. Deflettere in basso dall’esterno all’interno",
+   "id": "fmqaz9ftxuu3p",
+   "zh": "撥",
+   "note": ""
+  },
+  {
+   "g": "Condizionamento",
+   "s": 2,
+   "t": "5. Deflettere in basso dall’interno all’esterno",
+   "id": "fmqaz9ftxyykf",
+   "zh": "撥",
+   "note": ""
+  },
+  {
+   "g": "Condizionamento",
+   "s": 1,
+   "t": "6. Deflettere gancio alto",
+   "id": "fmqaz9ftxlkus",
+   "zh": "撥",
+   "note": ""
+  },
+  {
+   "g": "Condizionamento",
+   "s": 1,
+   "t": "7. Deflettere gancio basso",
+   "id": "fmqaz9ftxadk8",
+   "zh": "撥",
+   "note": ""
+  },
+  {
+   "g": "Condizionamento",
+   "s": 2,
+   "t": "8. Deflettere con entrambe le mani",
+   "id": "fmqaz9ftxydar",
+   "zh": "撥",
+   "note": ""
+  },
+  {
+   "g": "Condizionamento",
+   "s": 2,
+   "t": "9. Deflettere e spingere",
+   "id": "fmqaz9ftxahuu",
+   "zh": "撥",
+   "note": ""
+  },
+  {
+   "g": "Condizionamento",
+   "s": 1,
+   "t": "10. Deflettere e spingere con braccio e gamba",
+   "id": "fmqaz9ftx385l",
+   "zh": "撥",
+   "note": ""
+  },
+  {
+   "g": "Proiezioni e leve",
+   "s": 2,
+   "t": "Proiezioni 摔 (shuāi)",
+   "id": "fmqaz9ftx0n3k",
+   "zh": "摔",
+   "note": ""
+  },
+  {
+   "g": "Proiezioni e leve",
+   "s": 1,
+   "t": "Leva al polso 拿腕",
+   "id": "fmqaz9ftx5wpr",
+   "zh": "拿",
+   "note": ""
+  },
+  {
+   "g": "Proiezioni e leve",
+   "s": 1,
+   "t": "Leva al gomito 拿肘",
+   "id": "fmqaz9ftx8cl3",
+   "zh": "拿",
+   "note": ""
+  },
+  {
+   "g": "Proiezioni e leve",
+   "s": 1,
+   "t": "Leva alla spalla 拿肩",
+   "id": "fmqaz9ftxr0su",
+   "zh": "拿",
+   "note": ""
+  },
+  {
+   "g": "Proiezioni e leve",
+   "s": 1,
+   "t": "Leve sulle dita 拿指",
+   "id": "fmqaz9ftxndfd",
+   "zh": "拿",
+   "note": ""
+  },
+  {
+   "g": "Proiezioni e leve",
+   "s": 1,
+   "t": "Leve sul collo 锁喉",
+   "id": "fmqaz9ftxvyf2",
+   "zh": "拿",
+   "note": ""
+  },
+  {
+   "g": "Sparring",
+   "s": 2,
+   "t": "Sparring condizionato 喂手 (wèi shǒu)",
+   "id": "fmqaz9ftxgejb",
+   "zh": "喂",
+   "note": ""
+  },
+  {
+   "g": "Sparring",
+   "s": 2,
+   "t": "Solo pugni",
+   "id": "fmqaz9ftxvz1a",
+   "zh": "拳",
+   "note": ""
+  },
+  {
+   "g": "Sparring",
+   "s": 2,
+   "t": "Solo calci",
+   "id": "fmqaz9ftx2o3l",
+   "zh": "腿",
+   "note": ""
+  },
+  {
+   "g": "Sparring",
+   "s": 2,
+   "t": "Pugni e calci",
+   "id": "fmqaz9ftxhte3",
+   "zh": "打",
+   "note": ""
+  },
+  {
+   "g": "Sparring",
+   "s": 2,
+   "t": "Con spazzate",
+   "id": "fmqaz9ftxvxpn",
+   "zh": "掃",
+   "note": ""
+  },
+  {
+   "g": "Sparring",
+   "s": 1,
+   "t": "Con proiezioni",
+   "id": "fmqaz9ftxtnfw",
+   "zh": "摔",
+   "note": ""
+  },
+  {
+   "g": "Sparring",
+   "s": 1,
+   "t": "Con leve",
+   "id": "fmqaz9ftxhy8y",
+   "zh": "拿",
+   "note": ""
+  },
+  {
+   "g": "Sparring",
+   "s": 1,
+   "t": "Sparring libero 散手 (sàn shǒu)",
+   "id": "fmqaz9ftxhs5h",
+   "zh": "散",
+   "note": ""
+  }
+ ],
+ "titles": [
+  {
+   "t": "1° Duan - Fascia Nera",
+   "id": "fmqb5v9ih9s5y",
+   "date": "2025-06-30",
+   "tipo": "Praticante"
+  },
+  {
+   "t": "3° Duan",
+   "id": "fmqb5w0p932p5",
+   "date": "2025-12-12",
+   "tipo": "Praticante"
+  },
+  {
+   "t": "Certificato da Istruttore",
+   "id": "fmqb5wtmu817b",
+   "date": "2026-01-01",
+   "tipo": "Istruttore"
+  },
+  {
+   "t": "Fascia Rossa",
+   "id": "fmqb5xkn10idm",
+   "date": "2024-06-30",
+   "tipo": "Praticante"
+  }
+ ],
+ "section": "pratica",
+ "tuishou": [
+  {
+   "g": "Codificato",
+   "s": 2,
+   "t": "1. Dan Tui 单推手 – Spinta singola",
+   "id": "fmqaz9ftxhkxv",
+   "zh": "單",
+   "note": ""
+  },
+  {
+   "g": "Codificato",
+   "s": 2,
+   "t": "2. Huan Hua 挽花 – Mulinelli a fiore (intrecciare i fiori)",
+   "id": "fmqaz9ftxh1tr",
+   "zh": "挽",
+   "note": ""
+  },
+  {
+   "g": "Codificato",
+   "s": 2,
+   "t": "3. Ding Bu 定步 – Passi fissi",
+   "id": "fmqaz9ftxf0p5",
+   "zh": "定",
+   "note": ""
+  },
+  {
+   "g": "Codificato",
+   "s": 2,
+   "t": "4. Huan Bu 换步 – Cambio passo",
+   "id": "fmqaz9ftx5yo2",
+   "zh": "換",
+   "note": ""
+  },
+  {
+   "g": "Codificato",
+   "s": 2,
+   "t": "5. Da Lu 大捋 – Grande deviazione",
+   "id": "fmqaz9ftxttyb",
+   "zh": "捋",
+   "note": ""
+  },
+  {
+   "g": "Codificato",
+   "s": 2,
+   "t": "6. Wan Cai Hua 乱采花 – Raccogliere i fiori a caso (passi liberi)",
+   "id": "fmqaz9ftxayye",
+   "zh": "採",
+   "note": ""
+  },
+  {
+   "g": "Non codificato",
+   "s": 2,
+   "t": "Libero a piedi fissi 定步散手",
+   "id": "fmqaz9ftxt9ho",
+   "zh": "散",
+   "note": ""
+  },
+  {
+   "g": "Non codificato",
+   "s": 2,
+   "t": "Libero a piedi mobili 活步散手",
+   "id": "fmqaz9ftx2pai",
+   "zh": "活",
+   "note": ""
+  }
+ ],
+ "practice": {
+  "2026-06-12": 46
+ }
+}
